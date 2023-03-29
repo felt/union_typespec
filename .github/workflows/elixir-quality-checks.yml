@@ -1,0 +1,54 @@
+name: Elixir Quality Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  quality_checks:
+    name: Formatting, Credo, and Unused Deps
+    runs-on: ubuntu-latest
+    env:
+      # In MIX_ENV=test, `$ mix xref graph` shows us a whole bunch of
+      # test stuff that isn't really relevant (I think because Phoenix
+      # changes what's a compile time versus runtime dependency in test
+      # mode).
+      #
+      # The other checks don't really care what environment they run in,
+      # and the Dialyzer job is already caching dev builds as well.
+      MIX_ENV: dev
+      elixir: "1.14.3"
+      otp: "25.1.2"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Elixir Project
+        uses: ./.github/actions/elixir-setup
+        with:
+          elixir-version: ${{ env.elixir }}
+          otp-version: ${{ env.otp }}
+          build-app: false
+
+      - name: Check for unused deps
+        run: mix deps.unlock --check-unused
+
+      - name: Check code formatting
+        run: mix format --check-formatted
+        # Check formatting even if there were unused deps so that
+        # we give devs as much feedback as possible & save some time.
+        if: always()
+
+      - name: Run Credo
+        run: mix credo
+        # Run Credo even if formatting or the unused deps check failed
+        if: always()
+
+      - name: Check for compile-time dependencies
+        run: mix xref graph --label compile-connected --fail-above 0
+        if: always()
