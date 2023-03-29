@@ -1,6 +1,7 @@
 # union_typespec
 
-A simple, tiny library for defining an Elixir `@type` whose values are one of a few options.
+A simple, tiny, compile time-only library for defining an Elixir `@type` whose values
+are one of a fixed set of options.
 
 There are two ways to use it:
 
@@ -38,7 +39,7 @@ adding the following to your `mix.exs` and running `$ mix deps.get`:
 ```elixir
 def deps do
   [
-    {:union_typespec, git: "https://github.com/felt/union_typespec.git", tag: "v0.0.1"},
+    {:union_typespec, git: "https://github.com/felt/union_typespec.git", tag: "v0.0.2", runtime: false},
   ]
 end
 ```

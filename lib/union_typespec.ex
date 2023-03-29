@@ -1,6 +1,6 @@
 defmodule UnionTypespec do
   @moduledoc """
-  A tiny, simple library for writing type definitions whose values are one of a list of options.
+  A simple, tiny, compile time-only library for defining an Elixir `@type` whose values are one of a fixed set of options.
   """
 
   @doc """
