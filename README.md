@@ -29,3 +29,18 @@ defmodule MyModule do
 end
 ```
 
+## Installation
+
+We have not yet published the package to Hex, because it's not (yet?) clear
+that it's valuable to anyone else. Until we do, you can still install it by
+adding the following to your `mix.exs` and running `$ mix deps.get`:
+
+```elixir
+def deps do
+  [
+    {:union_typespec, git: "https://github.com/felt/union_typespec.git", tag: "v0.0.1"},
+  ]
+end
+```
+
+And if you do find it useful, we'd love to hear about it!
