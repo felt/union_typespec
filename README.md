@@ -39,7 +39,7 @@ adding the following to your `mix.exs` and running `$ mix deps.get`:
 ```elixir
 def deps do
   [
-    {:union_typespec, git: "https://github.com/felt/union_typespec.git", tag: "v0.0.2", runtime: false},
+    {:union_typespec, git: "https://github.com/felt/union_typespec.git", tag: "v0.0.3", runtime: false},
   ]
 end
 ```

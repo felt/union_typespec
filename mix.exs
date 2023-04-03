@@ -4,7 +4,7 @@ defmodule UnionTypespec.MixProject do
   def project do
     [
       app: :union_typespec,
-      version: "0.0.2",
+      version: "0.0.3",
       elixir: "~> 1.12",
       package: package(),
       source_url: "https://github.com/felt/union_typespec",
