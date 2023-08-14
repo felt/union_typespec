@@ -45,7 +45,7 @@ defmodule UnionTypespec.MixProject do
     [
       {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.16.0", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.17.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false}
     ]
   end
