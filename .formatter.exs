@@ -1,4 +1,4 @@
-locals_without_parens = [union_type: 1]
+locals_without_parens = [union_type: 1, union_typep: 1]
 
 [
   line_length: 120,

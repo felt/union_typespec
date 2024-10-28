@@ -13,6 +13,7 @@ defmodule UnionTypespec.MixProject do
       deps: deps(),
       aliases: aliases(),
       test_coverage: [tool: ExCoveralls],
+      elixirc_paths: elixirc_paths(Mix.env()),
       preferred_cli_env: [
         check: :test,
         coveralls: :test,
@@ -49,6 +50,9 @@ defmodule UnionTypespec.MixProject do
       {:ex_doc, "~> 0.27", only: :dev, runtime: false}
     ]
   end
+
+  defp elixirc_paths(:test), do: ~w(lib test/support)
+  defp elixirc_paths(_env), do: ~w(lib)
 
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, to install project dependencies and perform other setup tasks, run:

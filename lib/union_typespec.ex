@@ -29,6 +29,27 @@ defmodule UnionTypespec do
   end
 
   @doc """
+  Same as `union_type/1` but for a private type (`@typep`).
+
+  Example:
+
+    defmodule MyModule do
+      import UnionTypespec, only: [union_typep: 1]
+
+      @permissions [:view, :edit, :admin]
+      union_typep permission :: @permissions
+
+      @spec random_permission() :: permission()
+      defp random_permission, do: Enum.random(@permissions)
+    end
+  """
+  defmacro union_typep({:"::", _, [{name, _, _}, data]}) do
+    quote bind_quoted: [data: data, name: name] do
+      @typep unquote({name, [], Elixir}) :: unquote(UnionTypespec.union_type_ast(data))
+    end
+  end
+
+  @doc """
   Unquote on the right-hand side of `@type` if you prefer the explicitness of that syntax over the `union_type` macro.
 
   Example:
