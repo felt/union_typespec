@@ -1,5 +1,6 @@
-defmodule SomeModule do
+defmodule UnionTypespec.Test.SampleModule do
   @moduledoc false
+
   import UnionTypespec, only: [union_type: 1, union_typep: 1]
 
   @statuses [:read, :unread, :deleted]

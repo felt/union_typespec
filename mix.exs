@@ -14,6 +14,7 @@ defmodule UnionTypespec.MixProject do
       aliases: aliases(),
       test_coverage: [tool: ExCoveralls],
       elixirc_paths: elixirc_paths(Mix.env()),
+      docs: docs(),
       preferred_cli_env: [
         check: :test,
         coveralls: :test,
@@ -71,6 +72,13 @@ defmodule UnionTypespec.MixProject do
         "test --warnings-as-errors",
         "credo"
       ]
+    ]
+  end
+
+  defp docs do
+    [
+      extras: ~w(CHANGELOG.md README.md),
+      main: "readme"
     ]
   end
 end
