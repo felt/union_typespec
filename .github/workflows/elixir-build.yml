@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   build:
@@ -30,3 +30,6 @@ jobs:
           otp-version: ${{ matrix.otp }}
           build-flags: --all-warnings --warnings-as-errors
 
+      - name: Run tests
+        run: mix test --warnings-as-errors
+        shell: sh
